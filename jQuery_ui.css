@@ -1,0 +1,28 @@
+.echarts {
+  border: 1px solid #ddd;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 5px #ddd;
+  float: left;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.echarts>.header {
+  height: 28px;
+  color: #777;
+  padding: 5px 0 !important;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #fff;
+  z-index: 999;
+  background: linear-gradient(#eceaf3 0%,
+      #ffffff 100%);
+}
+
+.echarts>.header>.title {
+  padding: 5px 0 5px 10px;
+}

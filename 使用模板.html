@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="jQuery_ui.css">
+</head>
+<style>
+  #e {
+    width: 500px;
+    height: 400px;
+  }
+</style>
+
+<body>
+  <div id="e">
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/echarts.min.js"></script>
+  <script src="/jQuery_ui.js"></script>
+  <script type="text/javascript">
+    $("#e").my_index("可以修改的标题", "统计图ID");
+    let dom = document.getElementById("统计图ID");
+    let myChart = echarts.init(dom);
+    let app = {};
+    option = null;
+    option = {
+      legend: {},
+      tooltip: {},
+      dataset: {
+        source: [
+          ['product', '2015', '2016', '2017'],
+          ['Matcha Latte', 43.3, 85.8, 93.7],
+          ['Milk Tea', 83.1, 73.4, 55.1],
+          ['Cheese Cocoa', 86.4, 65.2, 82.5],
+          ['Walnut Brownie', 72.4, 53.9, 39.1]
+        ]
+      },
+      xAxis: {
+        type: 'category'
+      },
+      yAxis: {},
+      // Declare several bar series, each will be mapped
+      // to a column of dataset.source by default.
+      series: [{
+          type: 'bar'
+        },
+        {
+          type: 'bar'
+        },
+        {
+          type: 'bar'
+        }
+      ]
+    };;
+    if (option && typeof option === "object") {
+      myChart.setOption(option, true);
+    }
+    window.addEventListener("resize", () => {
+      myChart.resize();
+    });
+  </script>
+</body>
+
+</html>
