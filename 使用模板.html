@@ -8,59 +8,96 @@
   <link rel="stylesheet" href="jQuery_ui.css">
 </head>
 <style>
-  #e {
-    width: 500px;
-    height: 400px;
-  }
+  /* #e::after {
+    content: "";
+    display: block;
+    clear: both;
+  } */
 </style>
 
 <body>
+  <div><button onclick="my_fun()">clickMe</button></div>
+  <div><button onclick="my_open()">clickMe</button></div>
   <div id="e">
+
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="/echarts.min.js"></script>
   <script src="/jQuery_ui.js"></script>
   <script type="text/javascript">
-    $("#e").my_index("可以修改的标题", "统计图ID");
-    let dom = document.getElementById("统计图ID");
-    let myChart = echarts.init(dom);
-    let app = {};
-    option = null;
-    option = {
-      legend: {},
-      tooltip: {},
-      dataset: {
-        source: [
-          ['product', '2015', '2016', '2017'],
-          ['Matcha Latte', 43.3, 85.8, 93.7],
-          ['Milk Tea', 83.1, 73.4, 55.1],
-          ['Cheese Cocoa', 86.4, 65.2, 82.5],
-          ['Walnut Brownie', 72.4, 53.9, 39.1]
-        ]
-      },
-      xAxis: {
-        type: 'category'
-      },
-      yAxis: {},
-      // Declare several bar series, each will be mapped
-      // to a column of dataset.source by default.
-      series: [{
-          type: 'bar'
-        },
-        {
-          type: 'bar'
-        },
-        {
-          type: 'bar'
-        }
-      ]
-    };;
-    if (option && typeof option === "object") {
-      myChart.setOption(option, true);
+    function my_fun() {
+      var i = 1;
+      $("#e").my_index("可以修改的标题", "统计图ID");
+      $("#e").my_index("可以修改的标题", "统计图I");
+      biao();
     }
-    window.addEventListener("resize", () => {
-      myChart.resize();
-    });
+    // $("#e").my_index("可以修改的标题", "统计图ID");
+    // $("#e").my_index("可以修改的标题", "统计图I");
+    // $("#e").my_index("可以修改的标题", "统计图");
+    // $("#e").my_index("可以修改的标题", "统计图");
+    function my_open() {
+      $(this).popup({
+        //width:"500", //设置弹出层宽度，如果不填写为300
+        //height:"300", //设置弹出层高度，如果不填写为150
+        title: "可以修改的标题", //设置标题
+        content: "可以修改的内容提示", //设置内容
+        cancelBoolse: 1, //1为确定，取消按钮都有，2为只有确定按钮，3为只有取消按钮
+        cancelBtn: "取消", //设置关闭文字
+        submitBtn: "确定", //设置确定文字
+        submitCallBack: submitCallBack, //设置确定的回调函数
+        closeCallBack: closeCallBack //设置关闭的回调函数
+      });
+      /* 确定回调函数*/
+      function submitCallBack() {
+        alert("这是确认事件处理");
+      }
+      /* 关闭回调函数*/
+      function closeCallBack() {
+        alert("这是取消事件处理");
+      }
+    }
+
+    function biao() {
+      let dom = document.getElementById("统计图ID");
+      let myChart = echarts.init(dom);
+      let app = {};
+      option = null;
+      option = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+          source: [
+            ['product', '2015', '2016', '2017'],
+            ['Matcha Latte', 43.3, 85.8, 93.7],
+            ['Milk Tea', 83.1, 73.4, 55.1],
+            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+            ['Walnut Brownie', 72.4, 53.9, 39.1]
+          ]
+        },
+        xAxis: {
+          type: 'category'
+        },
+        yAxis: {},
+        // Declare several bar series, each will be mapped
+        // to a column of dataset.source by default.
+        series: [{
+            type: 'bar'
+          },
+          {
+            type: 'bar'
+          },
+          {
+            type: 'bar'
+          }
+        ]
+      };;
+      if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+      }
+      window.addEventListener("resize", () => {
+        myChart.resize();
+      });
+    }
   </script>
 </body>
 
